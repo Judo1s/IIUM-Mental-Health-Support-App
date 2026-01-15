@@ -37,7 +37,11 @@ const HomeScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
       </div>
 
       {/* --- Quote Card Section --- */}
-      <div className="quote-card">
+      <div 
+        className="quote-card" 
+        onClick={() => onNavigate('IslamicReminders')}
+        style={{ cursor: 'pointer' }}
+      >
         <p className="quote-text">
           Physically and mentally tired, but I still believe that,
         </p>
@@ -61,7 +65,12 @@ const HomeScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
                 <div className="doctor-time">{appt.time}</div>
               </div>
             </div>
-            <button className="reschedule-button">Reschedule</button>
+            <button 
+              className="reschedule-button"
+              onClick={() => onNavigate('CounselingBooking')}
+            >
+              Reschedule
+            </button>
           </div>
         ))}
 

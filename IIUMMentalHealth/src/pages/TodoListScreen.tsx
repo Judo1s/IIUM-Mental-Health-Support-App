@@ -10,6 +10,8 @@ const TodoListScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
     { id: 3, text: 'Drink Water', completed: false },
   ]);
 
+  const [newTask, setNewTask] = useState('');
+
   const toggleTodo = (id: number) => {
     setTodos(todos.map(t => 
       t.id === id ? { ...t, completed: !t.completed } : t
@@ -18,6 +20,12 @@ const TodoListScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
 
   const deleteTodo = (id: number) => {
     setTodos(todos.filter(t => t.id !== id));
+  };
+
+  const addTask = () => {
+    if (newTask.trim() === '') return;
+    setTodos([...todos, { id: Date.now(), text: newTask, completed: false }]);
+    setNewTask('');
   };
 
   return (
@@ -36,7 +44,7 @@ const TodoListScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
 
       <div style={{ padding: '20px' }}>
         
-        {/* Placeholder for Input (Visual only for now) */}
+        {/* Input Field */}
         <div style={{ 
           display: 'flex', 
           backgroundColor: 'white', 
@@ -49,6 +57,9 @@ const TodoListScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
           <input 
             type="text" 
             placeholder="Add a new task..." 
+            value={newTask}
+            onChange={(e) => setNewTask(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && addTask()}
             style={{ 
               border: 'none', 
               outline: 'none', 
@@ -57,18 +68,21 @@ const TodoListScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
               fontFamily: 'inherit'
             }} 
           />
-          <button style={{ 
-            background: '#8E24AA', 
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '50%', 
-            width: '32px', 
-            height: '32px', 
-            display: 'flex', 
-            alignItems: 'center', 
-            justifyContent: 'center',
-            cursor: 'pointer'
-          }}>
+          <button 
+            onClick={addTask}
+            style={{ 
+              background: '#8E24AA', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '50%', 
+              width: '32px', 
+              height: '32px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center',
+              cursor: 'pointer'
+            }}
+          >
             <Plus size={20} />
           </button>
         </div>

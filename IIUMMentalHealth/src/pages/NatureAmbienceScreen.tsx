@@ -1,50 +1,41 @@
 import React from 'react';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Bird, Waves, CloudRain, Trees } from 'lucide-react';
 import type { NavigationProps } from '../types';
 import BottomNavBar from '../components/BottomNavBar';
 
 const NatureAmbianceScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
 
   const tracks = [
-    { id: 'visual', label: 'Visual Focus', icon: 'eye', style: 'btn-white' },
-    { id: 'balance', label: 'Balance', icon: 'stones', style: 'btn-silver' },
-    { id: 'serenity', label: 'Serenity', icon: 'butterfly', style: 'btn-silver' },
-    { id: 'grounding', label: 'Grounding', icon: 'mountain', style: 'btn-silver' },
+    { id: 'birds', label: 'Birds Chirping', icon: 'bird', style: 'btn-white' },
+    { id: 'waterfall', label: 'Waterfall', icon: 'waterfall', style: 'btn-silver' },
+    { id: 'rain', label: 'Rain', icon: 'rain', style: 'btn-silver' },
+    { id: 'forest', label: 'Forest', icon: 'tree', style: 'btn-silver' },
   ];
 
   const renderIcon = (type: string) => {
+    const iconProps = { size: 35, color: "#8E24AA" };
     switch (type) {
-      case 'eye':
-        return (
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="#8E24AA">
-            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
-          </svg>
-        );
-      case 'stones':
-        return (
-          <svg width="35" height="35" viewBox="0 0 24 24" fill="#8E24AA">
-            <ellipse cx="12" cy="6" rx="6" ry="3" opacity="0.6"/>
-            <ellipse cx="12" cy="12" rx="7" ry="3.5" opacity="0.8"/>
-            <ellipse cx="12" cy="19" rx="8" ry="4" />
-          </svg>
-        );
-      case 'butterfly':
-        return (
-          <svg width="35" height="35" viewBox="0 0 24 24" fill="#8E24AA">
-             <path d="M12 12c0-3 2.5-5 5-5s5 2 5 5c0 2.5-2 4-5 4h-5v-4zm0 0c0-3-2.5-5-5-5S2 9 2 12c0 2.5 2 4 5 4h5v-4z"/>
-            <path d="M12 12c0 3 2 5 4.5 5s4.5-2 4.5-5h-9zm0 0c0 3-2 5-4.5 5S3 15 3 12h9z" opacity="0.7"/>
-          </svg>
-        );
-      case 'mountain':
-        return (
-           <svg width="35" height="35" viewBox="0 0 24 24" fill="#8E24AA">
-            <path d="M14 6l-3.8 5.4L14 18l6-9-6-3z" opacity="0.7"/>
-            <path d="M10 8L2 20h18l-8-12z" />
-          </svg>
-        );
+      case 'bird':
+        return <Bird {...iconProps} />;
+      case 'waterfall':
+        return <Waves {...iconProps} />;
+      case 'rain':
+        return <CloudRain {...iconProps} />;
+      case 'tree':
+        return <Trees {...iconProps} />;
       default:
         return null;
     }
+  };
+
+  const [activeTracks, setActiveTracks] = React.useState<string[]>([]);
+
+  const toggleTrack = (id: string) => {
+    setActiveTracks(prev => 
+      prev.includes(id) 
+        ? prev.filter(trackId => trackId !== id) 
+        : [...prev, id]
+    );
   };
 
   return (
@@ -63,15 +54,28 @@ const NatureAmbianceScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
 
       {/* --- Main Purple Card --- */}
       <div className="nature-card-container">
-        {tracks.map((track) => (
-          <button 
-            key={track.id} 
-            className={`nature-option-btn ${track.style}`}
-            onClick={() => console.log(`Playing ${track.label}`)}
-          >
-            {renderIcon(track.icon)}
-          </button>
-        ))}
+        {tracks.map((track) => {
+          const isActive = activeTracks.includes(track.id);
+          return (
+            <button 
+              key={track.id} 
+              className={`nature-option-btn ${track.style}`}
+              style={{
+                flexDirection: 'column',
+                gap: '8px',
+                border: isActive ? '3px solid #8E24AA' : 'none',
+                backgroundColor: isActive ? '#E1BEE7' : undefined,
+                transform: isActive ? 'scale(0.95)' : undefined
+              }}
+              onClick={() => toggleTrack(track.id)}
+            >
+              {renderIcon(track.icon)}
+              <span style={{ fontSize: '12px', fontWeight: '600', color: '#555' }}>
+                {track.label}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* --- Bottom Navigation --- */}

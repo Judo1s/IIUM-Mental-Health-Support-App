@@ -50,7 +50,7 @@ const LoginScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
           <button className="social-button">✉️ Email</button>
           <button className="social-button">🍎 iOS</button>
           <button className="social-button">🎓 IIUM ID</button>
-          <button className="social-button">G Google</button>
+          <button className="social-button"> Google</button>
         </div>
       </div>
 

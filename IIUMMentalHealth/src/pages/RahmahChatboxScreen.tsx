@@ -75,7 +75,7 @@ const RahmahChatboxScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
         </div>
 
         {/* Input Area */}
-        <div className="chat-input-wrapper" style={{ padding: '20px', backgroundColor: 'white' }}>
+        <div className="chat-input-wrapper" style={{ padding: '20px' }}>
           <div className="chat-input-fake" style={{ paddingRight: '5px' }}> {/* Reusing container style but modifying content */}
             <MessageSquare size={20} color="white" style={{ marginRight: '10px' }} />
             <input 
@@ -96,7 +96,7 @@ const RahmahChatboxScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
             />
             <button 
               onClick={handleSend}
-              style={{ background: 'white', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', marginLeft: '10px' }}
+              style={{ background: 'white', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', marginLeft: '10px', marginRight: '8px' }}
             >
               <Send size={16} color="#8E24AA" />
             </button>

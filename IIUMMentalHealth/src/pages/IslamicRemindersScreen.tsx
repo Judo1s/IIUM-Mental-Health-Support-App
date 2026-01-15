@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChevronLeft } from 'lucide-react';
 import type { NavigationProps } from '../types';
+import BottomNavBar from '../components/BottomNavBar';
 
 const IslamicRemindersScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
   
@@ -59,19 +60,7 @@ const IslamicRemindersScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
       </div>
 
       {/* --- Bottom Navigation --- */}
-      <div className="nav-bar">
-        <button className="nav-item" onClick={() => onNavigate('Home')}>🏠</button>
-        
-        {/* Active state to show we are in the Calm Zone section */}
-        <button className="nav-item active-nav" onClick={() => onNavigate('CalmZone')}>🧘‍♀️</button>
-        
-        <div className="center-nav-wrapper">
-          <button className="center-nav-button">💬</button>
-        </div>
-
-        <button className="nav-item">😊</button>
-        <button className="nav-item" onClick={() => onNavigate('Profile')}>👤</button>
-      </div>
+      <BottomNavBar onNavigate={onNavigate} activeTab="CalmZone" />
 
     </div>
   );
