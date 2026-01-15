@@ -1,0 +1,1341 @@
+/* --- Profile Header --- */
+.profile-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.logout-button {
+  color: #FF4444; /* Red color from design */
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: underline;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- Profile Info --- */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  background-color: #fff;
+  border: 4px solid #000; /* Thick black border like icon */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.username-text {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* --- Mood Summary Chart Card --- */
+.mood-summary-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+  border: 1px solid #f0f0f0;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chart-title {
+  font-size: 12px;
+  color: #666;
+}
+
+.chart-average {
+  font-size: 12px;
+  color: #333;
+  font-weight: 600;
+}
+
+.chart-area {
+  display: flex;
+  height: 120px;
+}
+
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: 10px;
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.chart-graph {
+  flex: 1;
+  position: relative;
+  border-left: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.chart-x-axis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-left: 25px; /* Offset for Y-axis width */
+  font-size: 10px;
+  color: #888;
+}
+
+/* --- Settings List --- */
+.settings-list {
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #f0f0f0;
+}
+
+.settings-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.chevron-right {
+  font-size: 20px;
+  color: #ccc;
+  font-weight: bold;
+}
+
+/* --- Toggle Switch (Green) --- */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CD964; /* iOS Green */
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* --- Active Nav Item --- */
+.active-nav {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white circle */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Calm Zone Grid Partitioning --- */
+
+
+/* --- Calm Zone Tool Cards --- */
+.calm-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 0 10px;
+  width: 100%;
+}
+
+.calm-tool-card {
+  background-color: #A855F7; /* Vibrant Purple matching image */
+  border-radius: 20px;
+  aspect-ratio: 1; /* Square */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+  transition: transform 0.2s;
+  padding: 15px;
+}
+
+.calm-tool-card:hover {
+  transform: translateY(-5px);
+  background-color: #9333ea;
+}
+
+.tool-icon {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.tool-title {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+
+/* --- Bottom Navigation (Docked) --- */
+.nav-bar-docked {
+  position: fixed;
+  bottom: 0;
+  left: 0; /* Full width relative to viewport or container? container is max-width 480px. */
+  /* To keep it inside the container "phone" view, we position relative to the container if possible? 
+     But .container has min-height 100vh. 
+     Let's use fixed but target the max-width center.
+  */
+  width: 100%;
+  max-width: 480px;
+  height: 80px;
+  background-color: #A855F7; /* Purple */
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+  padding-bottom: 10px; /* Safe area */
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+}
+
+.nav-item-docked {
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.nav-item-docked:hover {
+  color: white;
+}
+
+.active-docked {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+}
+
+/* Floating Center Button Logic */
+.center-docked-wrapper {
+  position: relative;
+  width: 60px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* The "hump" effect using a pseudo circle behind the button, masking the bar? 
+   Actually, easiest visual hack:
+   Just place the button floating slightly above.
+*/
+.center-docked-button {
+  position: absolute;
+  top: -45px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #C084FC; /* Lighter Purple for button */
+  border: 4px solid white; /* White border to separate from screen content if needed, 
+                              or matching Nav color to look like part of it? 
+                              Image shows purple button on purple bar with a curve.
+                              Let's match the bar color #A855F7 but add a white border 
+                              or just use a convex shape. 
+                           */
+  background-color: #D8B4FE; /* Light pastel purple for the button itself */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.center-curve-bg {
+  /* Optional: Creates the visual "cutout" or "add-on" curve. 
+     For now, just the button floating is often enough for the look. 
+     Let's try to simulate the curve with a white border on the bottom of the button?
+     Actually, the image has the nav bar curving UP to meet the button.
+     This is hard with simple CSS. 
+     Let's stick to a floating button with a thick border matching the background (white) 
+     so it looks like a cutout from the page, or border matching the nav bar?
+  */
+  display: none; 
+}
+
+/* --- Reminders Grid Layout --- */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 16px;
+  padding: 0 20px;
+}
+
+/* --- Reminder Card Styling --- */
+.reminder-card {
+  background-color: #A020F0; /* Use your variable var(--primary-color) if available */
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  min-height: 140px;
+}
+
+/* Featured card spans across both columns */
+.reminder-card.featured {
+  grid-column: span 2;
+  min-height: 160px;
+}
+
+.reminder-text {
+  color: white;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.reminder-ref {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 700;
+  align-self: flex-start;
+}
+
+/* --- Nature/Ambiance Page --- */
+.nature-list-container {
+  background-color: #A020F0; /* Primary Purple */
+  border-radius: 20px;
+  padding: 30px 20px;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.nature-button {
+  background-color: #E0E0E0; /* Light Grey/Lavender from image */
+  border-radius: 15px;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nature-button:hover {
+  transform: scale(1.02);
+  background-color: #F5F5F5;
+}
+
+.nature-button:active {
+  transform: scale(0.98);
+}
+
+/* --- Daily Mood Check In Page --- */
+
+.mood-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.close-button {
+  font-size: 20px;
+  color: #888;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.mood-content {
+  margin-top: 20px;
+}
+
+.mood-question {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.datetime-row {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  color: #666;
+  font-size: 13px;
+}
+
+.datetime-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Mood Selection Row */
+.mood-selection-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 10px;
+}
+
+.mood-item-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.mood-item-btn:hover {
+  transform: translateY(-5px);
+}
+
+.mood-item-btn.selected {
+  transform: scale(1.1);
+}
+
+.mood-icon-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.mood-emoji-large {
+  font-size: 24px;
+  color: white; /* Assuming white icons on colored circles */
+}
+
+.mood-label-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: lowercase;
+}
+
+/* --- Counseling Booking Page --- */
+
+/* --- Rahmah Chatbox --- */
+.chat-interface-container {
+  background-color: #C4A4D6; /* Dusty Lavender from image */
+  border-radius: 20px;
+  padding: 24px;
+  margin: 10px 10px 100px 10px; /* Bottom margin for nav bar */
+  min-height: 70vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.chat-bubble {
+  padding: 16px 20px;
+  border-radius: 24px;
+  max-width: 75%;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  animation: fadeIn 0.3s ease-in-out;
+  line-height: 1.3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bot-bubble {
+  background-color: #EAD6F7; /* Very pale purple/pinkish */
+  align-self: flex-start;
+  color: #000;
+  border-bottom-left-radius: 4px; /* Subtle tail curve anchor */
+}
+
+.user-bubble {
+  background-color: #E0C3FC; /* Light slightly brighter purple */
+  align-self: flex-end;
+  color: #000;
+  border-bottom-right-radius: 4px; /* Subtle tail curve anchor */
+  font-weight: 600;
+}
+
+/* Tails for bubbles - Using Pseudo elements for sharper tails */
+.bot-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -8px;
+  width: 20px;
+  height: 20px;
+  background-color: #EAD6F7;
+  border-bottom-right-radius: 15px;
+  z-index: -1;
+  clip-path: polygon(0 0, 100% 100%, 100% 0); /* Triangle wedge */
+  /* Actually css clip paths are tricky for curves. Let's stick to the subtle corner radius trick or simple triangle */
+}
+
+/* Let's simplify tails to just a triangle wedge */
+.bubble-tail-left {
+  position: absolute;
+  bottom: 0;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #EAD6F7;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  border-bottom-right-radius: 10px; /* Try to curve it */
+}
+
+.bubble-tail-right {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #E0C3FC;
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.chat-text {
+  font-size: 15px;
+  font-weight: 700; /* Bold font as in image */
+  margin: 0;
+  color: #000;
+}
+
+/* Input Area */
+.chat-input-wrapper {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  right: 20px;
+}
+
+.chat-input-fake {
+  background-color: #9C27B0; /* Deep Purple button */
+  border-radius: 30px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between icon and text if needed, or justify-end for text? Image shows text on right? No, text looks centered or left. Let's look closely.
+  Image: Icon on LEFT...... Text on RIGHT "Lets Talk!".
+  */
+  padding: 0 24px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.chat-input-fake span {
+  font-size: 16px; 
+  font-weight: 600;
+  margin-left: auto; /* Pushes text to the right if we want, or just verify image alignment.
+  In image: Icon is left. Text "Lets Talk!" is on the right side.
+  */
+}
+
+.chat-input-fake:active {
+  transform: scale(0.98);
+}
+
+/* Calendar Card */
+.calendar-card {
+  background-color: white;
+  border-radius: 20px;
+}
+
+/* --- Dark Mood History Calendar --- */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.circle-nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #333;
+}
+
+.month-title-large {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+.purple-calendar-card {
+  background-color: #A020F0; /* Primary Purple */
+  border-radius: 24px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(160, 32, 240, 0.3);
+}
+
+.calendar-card-title-white {
+  color: white;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dark-calendar-grid {
+  background-color: #1F2937; /* Dark Grey/Black content box */
+  border-radius: 12px;
+  padding: 15px;
+  width: 100%;
+}
+
+.grid-header-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.dark-day-header {
+  font-size: 11px;
+  color: #9CA3AF; /* Light Grey text */
+}
+
+.grid-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 15px;
+  column-gap: 5px;
+}
+
+.calendar-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Circles */
+.mood-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.mood-icon-dark {
+  color: #000; /* Icons inside colored circles usually black or dark for contrast on pastel/neon colors */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #374151; /* Darker Grey placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4B5563;
+}
+
+.plus-sign-dark {
+  color: #9CA3AF;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.date-label {
+  color: white;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+/* Counselor Cards */
+.counselor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10px;
+}
+
+.counselor-card {
+  background: linear-gradient(90deg, #9C27B0 0%, #BA68C8 100%); /* Purple Gradient */
+  border: none;
+  border-radius: 20px; /* Highly rounded pill shape */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+
+.counselor-card:hover {
+  transform: scale(1.02);
+}
+
+.counselor-avatar-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  border: 2px solid white;
+  overflow: hidden; /* Ensures image fits circle */
+}
+
+.counselor-name {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Active Center Button Style (Optional Override) */
+.active-center-btn {
+  background-color: #E1BEE7; /* Lighter highlight */
+  border-color: #9C27B0;
+}
+
+
+/* --- Mood Details Screen --- */
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #333;
+}
+
+.save-btn {
+  color: #26A69A; /* Teal/Green color */
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none; /* Ensure no background */
+  border: none;
+  cursor: pointer;
+}
+
+.check-icon {
+  background-color: #26A69A;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: center;
+}
+
+/* The Purple Card Container */
+.purple-card {
+  background-color: #A020F0; /* Primary Purple */
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(160, 32, 240, 0.2);
+}
+
+.card-label {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  opacity: 1; /* Fully opaque */
+}
+
+/* Options Grids */
+.options-grid-sleep {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.options-grid-emotions {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.option-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s;
+  padding: 0;
+}
+
+.option-btn:hover {
+  transform: translateY(-3px);
+}
+
+.option-btn.active {
+  transform: scale(1.1);
+}
+
+/* Icon Styling */
+.icon-circle-white {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #26A69A; /* Teal Icon Color */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.option-btn:hover .icon-circle-white {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.option-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  line-height: 1.2;
+}
+
+/* --- Breathing Exercise Redesign --- */
+
+.breathing-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.breathing-circle-container {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.breathing-ring-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.breathing-ring-circle {
+  fill: none;
+  stroke: #E0B0FF;
+  stroke-width: 6;
+}
+
+.breathing-progress-circle {
+  fill: none;
+  stroke: #A020F0;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.breath-dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: #A020F0;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+.dot-top { top: -2px; left: 50%; transform: translateX(-50%); }
+.dot-right { right: -2px; top: 50%; transform: translateY(-50%); }
+.dot-bottom { bottom: -2px; left: 50%; transform: translateX(-50%); }
+.dot-left { left: -2px; top: 50%; transform: translateY(-50%); }
+
+.breath-label {
+  position: absolute;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.breath-label.active {
+  color: #333;
+  font-weight: 700;
+  transform: scale(1.1);
+}
+
+/* Correct positioning based on image analysis */
+.label-top { 
+  top: 40px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+} 
+
+.label-right { 
+  right: -50px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.label-bottom { 
+  bottom: -40px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.label-left { 
+  left: -60px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.breath-timer-large {
+  font-size: 64px;
+  font-weight: 700;
+  color: #000;
+  margin-top: 10px;
+  font-family: Arial, sans-serif;
+  line-height: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.breath-instruction-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  max-width: 280px;
+  line-height: 1.5;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Nasheed Player Redesign --- */
+
+.nasheed-gradient-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #E1BEE7 0%, #BA68C8 50%, #AB47BC 100%);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+  color: white;
+}
+
+.nasheed-header-title {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.album-art-large {
+  width: 250px;
+  height: 250px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Placeholder for calligraphy inside album art if no img */
+.album-art-placeholder {
+  font-size: 80px;
+  color: #8E24AA;
+}
+
+.player-info-center {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.song-title-large {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.artist-name-large {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.player-progress-bar {
+  width: 80%;
+  height: 4px;
+  background-color: rgba(255,255,255,0.3);
+  margin: 0 auto 40px auto;
+  border-radius: 2px;
+  position: relative;
+}
+
+.player-progress-fill {
+  width: 40%;
+  height: 100%;
+  background-color: white;
+  border-radius: 2px;
+}
+
+.player-controls-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.control-btn-white {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* --- Nature Ambience Redesign --- */
+
+.nature-container {
+  min-height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.nature-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.nature-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin-left: 10px;
+}
+
+.nature-card-container {
+  background-color: #A020F0; /* Purple Card */
+  margin: 10px 20px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 4px 10px rgba(160, 32, 240, 0.3);
+}
+
+.nature-option-btn {
+  width: 100%;
+  height: 60px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nature-option-btn:hover {
+  transform: scale(1.02);
+}
+
+/* Alternate colors based on visual:
+   The top one is White.
+   The second is Grey/Transparent?
+   The third is Grey?
+   The fourth is Grey?
+   Ref image: 
+   1. Eye: White bg, Purple icon.
+   2. Stones: Grey bg, Purple icon.
+   3. Butterfly: Grey bg, Purple icon.
+   4. Mountain: Grey bg, Purple icon.
+*/
+
+.btn-white {
+  background-color: white;
+}
+
+/* Light silver/grey */
+.btn-silver {
+  background-color: #E0E0E0; 
+}
+
+
+/* --- Calendar (Counseling Booking) Style Fix --- */
+.calendar-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Subtle shadow */
+  margin: 10px 20px;
+  border: 1px solid #f0f0f0;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.month-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-arrow {
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.nav-arrow:hover {
+  background-color: #f5f5f5;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  gap: 5px;
+}
+
+.days-row {
+  margin-bottom: 10px;
+}
+
+.day-name {
+  font-size: 12px;
+  color: #999;
+  font-weight: 600;
+}
+
+.date-cell {
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  border-radius: 50%; /* Circular selection */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.date-cell:hover {
+  background-color: #f0f0f0;
+}
+
+.active-date {
+  background-color: #A855F7; /* Purple to match theme */
+  color: white;
+  font-weight: 700;
+}
+
+/* --- Counselor List Styles --- */
+.counselor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.counselor-card {
+  display: flex;
+  align-items: center;
+  background-color: #A855F7; /* Purple Card */
+  color: white;
+  border: none;
+  padding: 15px 20px; /* Reduced padding slightly */
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(168, 85, 247, 0.3);
+  transition: transform 0.2s;
+  height: 80px; /* Specific height to match reference card look */
+}
+
+/* The reference image shows "Mr Albert" inside a large purple card at the bottom 
+   with what looks like a white circle for the avatar. */
+
+.counselor-avatar-circle {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.counselor-name {
+  font-size: 18px;
+  font-weight: 600;
+}

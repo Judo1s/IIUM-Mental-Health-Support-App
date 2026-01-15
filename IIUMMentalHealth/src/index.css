@@ -1,0 +1,247 @@
+@import './styles/variables.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input {
+  outline: none;
+  font-family: inherit;
+}
+
+/* --- Layout Utilities --- */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 480px; /* Mobile-view constraint for web */
+  margin: 0 auto;
+  background: #fff;
+  padding: 24px;
+}
+
+.center-content {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* --- Landing Screen --- */
+.circle-graphic {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: #e6e6fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.landing-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.landing-subtitle {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+}
+
+.nav-button-text {
+  color: #ccc;
+  font-size: 14px;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+.nav-button-text:hover {
+  color: var(--primary-color);
+}
+
+/* --- Header --- */
+.header-container {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.header-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 10px;
+}
+
+.header-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --- Forms --- */
+.form-container {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-placeholder);
+  margin-bottom: 8px;
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.input-field {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  font-size: 16px;
+  color: var(--text-primary);
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-bottom-color: var(--primary-color);
+}
+
+.password-container {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s;
+}
+.password-container:focus-within {
+  border-bottom-color: var(--primary-color);
+}
+
+.password-input {
+  flex: 1;
+  border: none;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.eye-icon {
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.forgot-pass-text {
+  color: #444;
+  font-weight: 600;
+  font-size: 14px;
+  align-self: flex-end;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+/* --- Buttons --- */
+.primary-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  width: 100%;
+  box-shadow: 0 4px 14px var(--shadow-color);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.primary-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.primary-button:active {
+  transform: translateY(0);
+}
+
+/* --- Social --- */
+.or-text {
+  text-align: center;
+  color: #999;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.social-button {
+  background-color: #f9f9f9;
+  border: 1px solid #eeeeee;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.2s;
+}
+
+.social-button:hover {
+  background-color: #f0f0f0;
+}
+
+/* --- Footer --- */
+.footer-text {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.link-text {
+  color: var(--primary-color);
+  font-weight: 700;
+  cursor: pointer;
+}
+.link-text:hover {
+  text-decoration: underline;
+}
