@@ -5,8 +5,8 @@ import BottomNavBar from '../components/BottomNavBar';
 
 const BreathingExerciseScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
   const [phase, setPhase] = useState<'Inhale' | 'Hold' | 'Exhale'>('Inhale');
-  const [timeLeft, setTimeLeft] = useState(4); // Start with Inhale 4s
-  const [isActive, setIsActive] = useState(true);
+  const [, setTimeLeft] = useState(4); // Start with Inhale 4s
+  const [isActive] = useState(true);
 
   // Configuration for phases
   const PHASES = {

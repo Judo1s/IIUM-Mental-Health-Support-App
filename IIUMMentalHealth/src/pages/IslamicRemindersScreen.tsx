@@ -1,5 +1,5 @@
 import React from 'react';
-import { Quote, ChevronLeft } from 'lucide-react';
+import { ChevronLeft } from 'lucide-react';
 import type { NavigationProps } from '../types';
 
 const IslamicRemindersScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
