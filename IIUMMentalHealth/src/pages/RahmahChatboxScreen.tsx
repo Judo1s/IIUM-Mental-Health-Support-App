@@ -1,56 +1,114 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import type { NavigationProps } from '../types';
 import BottomNavBar from '../components/BottomNavBar';
-import { MessageSquare } from 'lucide-react';
+import { MessageSquare, Send } from 'lucide-react';
+
+interface Message {
+  id: number;
+  text: string;
+  sender: 'user' | 'bot';
+}
 
 const RahmahChatboxScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
+  const [messages, setMessages] = useState<Message[]>([
+    { id: 1, text: "How are you feeling today?", sender: 'bot' }
+  ]);
+  const [inputText, setInputText] = useState('');
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSend = () => {
+    if (inputText.trim() === '') return;
+
+    const newUserMsg: Message = {
+      id: Date.now(),
+      text: inputText,
+      sender: 'user'
+    };
+
+    setMessages(prev => [...prev, newUserMsg]);
+    setInputText('');
+
+    // Simulate Bot Response
+    setTimeout(() => {
+      const botMsg: Message = {
+        id: Date.now() + 1,
+        text: "I hear you. Thank you for sharing. Would you like to talk more about it?",
+        sender: 'bot'
+      };
+      setMessages(prev => [...prev, botMsg]);
+    }, 1500);
+  };
+
   return (
-    <div className="container" style={{ backgroundColor: 'white' }}>
+    <div className="container" style={{ backgroundColor: 'white', display: 'flex', flexDirection: 'column', height: '100vh' }}>
       
       {/* --- Header --- */}
-      <div className="header-container center-content" style={{ marginTop: '40px', marginBottom: '20px' }}>
+      <div className="header-container center-content" style={{ marginTop: '20px', marginBottom: '20px', flexShrink: 0 }}>
         <h2 className="header-title" style={{ fontSize: '20px', fontWeight: '700' }}>
           Rahmah Chatbox
         </h2>
       </div>
 
       {/* --- Chat Layout --- */}
-      <div className="chat-interface-container">
+      <div className="chat-interface-container" style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         
-        {/* Helper Bot Bubble */}
-        <div className="chat-bubble bot-bubble">
-          <p className="chat-text">How are you feeling today?</p>
-          <div className="bubble-tail-left"></div>
+        {/* Messages List */}
+        <div className="messages-list" style={{ flex: 1, overflowY: 'auto', padding: '0 20px 20px 20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+          {messages.map((msg) => (
+            <div key={msg.id} className={`chat-bubble ${msg.sender === 'bot' ? 'bot-bubble' : 'user-bubble'}`}>
+              <p className={`chat-text ${msg.sender === 'user' ? 'white-text' : ''}`}>
+                {msg.text}
+              </p>
+              {msg.sender === 'bot' && <div className="bubble-tail-left"></div>}
+              {msg.sender === 'user' && <div className="bubble-tail-right"></div>}
+            </div>
+          ))}
+          <div ref={messagesEndRef} />
         </div>
 
-        {/* User Bubble */}
-        <div className="chat-bubble user-bubble">
-           <p className="chat-text white-text">
-             Im quite overwhelmed from my quiz today
-           </p>
-           <div className="bubble-tail-right"></div>
-        </div>
-
-        {/* Input Area (Mockup) */}
-        <div className="chat-input-wrapper">
-          <div className="chat-input-fake">
+        {/* Input Area */}
+        <div className="chat-input-wrapper" style={{ padding: '20px', backgroundColor: 'white' }}>
+          <div className="chat-input-fake" style={{ paddingRight: '5px' }}> {/* Reusing container style but modifying content */}
             <MessageSquare size={20} color="white" style={{ marginRight: '10px' }} />
-            <span style={{ fontWeight: 600 }}>Lets Talk!</span>
+            <input 
+              type="text" 
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+              placeholder="Lets Talk!" 
+              style={{ 
+                flex: 1, 
+                border: 'none', 
+                background: 'transparent', 
+                color: 'white', 
+                outline: 'none',
+                fontWeight: 600,
+                fontSize: '16px'
+              }}
+            />
+            <button 
+              onClick={handleSend}
+              style={{ background: 'white', border: 'none', borderRadius: '50%', width: '32px', height: '32px', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', marginLeft: '10px' }}
+            >
+              <Send size={16} color="#8E24AA" />
+            </button>
           </div>
         </div>
 
       </div>
 
       {/* --- Bottom Navigation --- */}
-      {/* We can highlight 'CounselingBooking' or just leave none active if it's a special overlay? 
-          The mockup shows the center button seemingly active/pressed or just present. 
-          Let's assume the center button IS the entry content.
-          But the center button in nav bar is usually for 'Chat'.
-      */}
-      <BottomNavBar onNavigate={onNavigate} activeTab="CounselingBooking" /> 
-      {/* Note: In BottomNavBar, we might need a specific 'Chat' active state if we want the button to look active.
-          For now reusing "CounselingBooking" or maybe adding a new literal to the component prop.
-      */}
+      <div style={{ flexShrink: 0 }}>
+        <BottomNavBar onNavigate={onNavigate} activeTab="RahmahChatbox" /> 
+      </div>
 
     </div>
   );

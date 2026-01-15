@@ -65,7 +65,11 @@ const HomeScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
           </div>
         ))}
 
-        <button className="primary-button" style={{ marginTop: '10px' }}>
+        <button 
+          className="primary-button" 
+          style={{ marginTop: '10px' }}
+          onClick={() => onNavigate('CounselingBooking')}
+        >
           Book New Session
         </button>
       </div>
