@@ -17,21 +17,21 @@ const LoginScreen: React.FC<NavigationProps> = ({ onNavigate }) => {
 
       <div className="form-container">
         <label className="label">Email</label>
-        <input 
-          type="email" 
-          className="input-field" 
-          placeholder="Enter your email" 
+        <input
+          type="email"
+          className="input-field"
+          placeholder="Enter your email"
         />
 
         <label className="label">Password</label>
         <div className="password-container">
-          <input 
-            type={showPassword ? "text" : "password"} 
-            className="password-input" 
-            placeholder="Enter password" 
+          <input
+            type={showPassword ? "text" : "password"}
+            className="password-input"
+            placeholder="Enter password"
           />
-          <span 
-            className="eye-icon" 
+          <span
+            className="eye-icon"
             onClick={() => setShowPassword(!showPassword)}
             role="button"
             tabIndex={0}
